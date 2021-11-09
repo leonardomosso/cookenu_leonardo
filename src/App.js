@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react"
+import Router from "./routes/Router"
+import theme from './constants/theme'
+import { ThemeProvider } from '@material-ui/core/styles'
+import { BrowserRouter } from 'react-router-dom'
+import Header from "./components/Header/Header"
 
-function App() {
+const App = () => {
+  const token = localStorage.getItem("token")
+  const [rightButtonText, setRightButtonText] = useState(token ? "Logout" : "Login")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Header rightButtonText={rightButtonText} setRightButtonText={setRightButtonText} />
+        <Router setRightButtonText={setRightButtonText}/>
+      </BrowserRouter>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
