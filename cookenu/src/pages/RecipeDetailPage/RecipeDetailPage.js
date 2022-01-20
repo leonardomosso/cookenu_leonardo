@@ -5,21 +5,24 @@ import useRequestData from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/urls"
 import { ScreenContainer, RecipeContainer, RecipeImage } from "./styled"
 import { Typography } from "@material-ui/core";
+import Loading from "../../Loading/Loading";
 
 const RecipeDetailPage = () => {
     useProtectedPage()
     const params = useParams()
-    const recipe = useRequestData({}, `${BASE_URL}/recipe/${params.id}`)[0]
+    const recipe = useRequestData([], `${BASE_URL}/recipe/${params.id}`)[0]
 
     return (
         <ScreenContainer>
-            {recipe &&
+            {recipe ?
                 <RecipeContainer>
                     <RecipeImage src={recipe.image} />
                     <Typography gutterBottom align={`center`} variant={'h5'} color={'primary'} > {recipe.title}</Typography>
                     <Typography align={'center'}>{recipe.description}</Typography>
 
-                </RecipeContainer>}
+                </RecipeContainer>:
+                <Loading/>
+                }
         </ScreenContainer>
     )
 }

@@ -6,8 +6,8 @@ import {BASE_URL} from '../../constants/urls';
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import { Add } from     "@material-ui/icons";
 import {useHistory} from 'react-router-dom';
-import {goToAddRecipes, goToRecipeDetail} from '../../routes/coordinator'
-
+import {goToAddRecipes, goToRecipeDetail} from '../../routes/coordinator';
+import Loading from "../../Loading/Loading";
 
 
 const RecipeListPage = () => {
@@ -33,7 +33,7 @@ const RecipeListPage = () => {
 
     return (
         <RecipeListContainer>
-            {recipesCards}
+            {recipesCards.length > 0 ? recipesCards : <Loading/>}
             <AddRecipeButton
                 color={'primary'}
                 onClick = {() => goToAddRecipes(history)}
