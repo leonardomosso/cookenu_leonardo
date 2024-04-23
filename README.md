@@ -1,4 +1,4 @@
-# Projeto de um site de receitas feito em Reacrt no bootcamp da Labenu.
+# Projeto de um site de receitas feito em React no bootcamp da Labenu.
 
 Nesse projeto guiado, pude compreender melhor as práticas de componetização, trabalhando com hooks e integrações de APIs. 
 
